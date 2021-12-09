@@ -13,7 +13,7 @@ services:
           args:
               APP: client
       environment:
-          - BASE_USL=3000
+          - DOCKER_URL=http://server:5000
       networks:
           - ravid-net
 ###########################

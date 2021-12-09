@@ -17,7 +17,7 @@ function App() {
   const [state, setState] = useState('randomize')
   const [action, setAction] = useState({
     method: 'POST',
-    url: `${ BASE_URL || process.env.DOCKER_URL }/randomize`,
+    url: `${ process.env.DOCKER_URL || BASE_URL }/randomize`,
     headers: { "Content-Type": "application/json" },
     data: { n: 0, m: 0 }
   })
@@ -43,7 +43,7 @@ function App() {
       setSize(prevState => { return {n, m} })
       setAction({
         method: 'POST',
-        url: `${ BASE_URL || process.env.DOCKER_URL}/randomize`,
+        url: `${ process.env.DOCKER_URL || BASE_URL}/randomize`,
         headers: { "Content-Type": "application/json" },
         data: { n, m }
       })
@@ -61,7 +61,7 @@ function App() {
     setState("solve")
     setAction({
       method: 'POST',
-      url: `${ BASE_URL || process.env.DOCKER_URL }/solve`,
+      url: `${ process.env.DOCKER_URL || BASE_URL }/solve`,
       headers: { "Content-Type": "application/json" },
       data: { mat, n: size.n, m: size.m }
     })
