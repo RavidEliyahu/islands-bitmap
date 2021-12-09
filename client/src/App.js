@@ -5,6 +5,7 @@ import axios from 'axios'
 
 function App() {
   const BASE_URL = process.env.REACT_APP_BASE_URL
+  const DOCKER_URL = process.env.REACT_APP_DOCKER_URL
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [showRandom, setShowRandom] = useState(true)
@@ -17,7 +18,7 @@ function App() {
   const [state, setState] = useState('randomize')
   const [action, setAction] = useState({
     method: 'POST',
-    url: `${ process.env.DOCKER_URL || BASE_URL }/randomize`,
+    url: `${ DOCKER_URL || BASE_URL }`,
     headers: { "Content-Type": "application/json" },
     data: { n: 0, m: 0 }
   })
@@ -43,7 +44,7 @@ function App() {
       setSize(prevState => { return {n, m} })
       setAction({
         method: 'POST',
-        url: `${ process.env.DOCKER_URL || BASE_URL}/randomize`,
+        url: `${ DOCKER_URL || BASE_URL}`,
         headers: { "Content-Type": "application/json" },
         data: { n, m }
       })
