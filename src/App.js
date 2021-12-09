@@ -5,54 +5,107 @@ import axios from 'axios'
 
 function App() {
   const [loading, setLoading] = useState(false)
+  const [showRandom, setShowRandom] = useState(true)
+  const [showSolve, setShowSolve] = useState(false)
+  const [showRestart, setShowRestart] = useState(false)
   const [mat, setMat] = useState([])
   const [size, setSize] = useState({ n: 0, m: 0})
+  const [islands, setIslands] = useState(0)
   const bitmapInputRef = useRef()
+  const [state, setState] = useState('randomize')
+  const [action, setAction] = useState({
+    method: 'POST',
+    url: `https://islands-bitmap-server.herokuapp.com/randomize`,
+    headers: { "Content-Type": "application/json" },
+    data: { n: 0, m: 0 }
+  })
 
 
   useEffect(() => {
-    const {n, m} = size;
-    axios({
+    axios(action)
+    .then((res) => {
+      setMat(res.data.mat)
+      if ("numOfIslands" in res.data) setIslands(res.data.numOfIslands)
+      setLoading(false);
+    })
+  }, [action])
+
+  function handleRandomize(e) {
+    setState("randomize")
+    const [n, m] = (bitmapInputRef.current.value).split(", ").map(Number);
+    setSize(prevState => { return {n, m} })
+    setAction({
       method: 'POST',
       url: `https://islands-bitmap-server.herokuapp.com/randomize`,
       headers: { "Content-Type": "application/json" },
-      data: {n, m}
+      data: { n, m }
     })
-    .then((res) => {
-      setMat(res.data.mat)
-      console.log(res.data)
-      setLoading(false);
-    })
-  }, [size, loading])
-
-  function handleRandomize(e) {
-    const [n, m] = (bitmapInputRef.current.value).split(", ").map(Number);
-    setSize(prevState => { return {n, m} })
     setLoading(true);
+
+    // switch buttons
+    setShowRandom(false);
+    setShowSolve(true);
   }
 
   function handleSolve(e) {
-    setLoading(true);
+    setState("solve")
+    setAction({
+      method: 'POST',
+      url: `https://islands-bitmap-server.herokuapp.com/solve`,
+      headers: { "Content-Type": "application/json" },
+      data: { mat, n: size.n, m: size.m }
+    })
+    setLoading(true)
+
+    // switch buttons
+    setShowSolve(false)
+    setShowRestart(true)
   }
 
-  if (loading) return "Loading.."
+  function handleRestart(e) {
+    setState("restart")
+    setShowRestart(false)
+    setMat([])
+    setSize({ n: 0, m: 0})
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    })
+    setShowRandom(true)
+  }
+
+  if (loading) return (<div className="center">"Loading.."</div>)
 
   return (
     <>
       <div className="center">
-        <p>Please enter bitmap size:</p>
+        <p>{ showRandom ? "Please enter bitmap size:" : `${size.n} X ${size.m}`}</p>
         {
-          (size.n > 0 && size.m > 0 && !loading) ? <Map mat={mat} size={size}></Map> : <></>
+          <Map mat={mat} size={size} state={state}></Map>
+        }
+        {
+          showRestart ? `FOUND ${ islands } ISLAND${ islands > 1 ? "S" : "" }!` : null
         }
         <form>
           <div>
-            <input ref={bitmapInputRef} type="text" id="bitmap_input" placeholder="Bitmap size: n, m"/>
+          { showRandom ?
+            <input ref={bitmapInputRef} type="text" id="bitmap_input" placeholder="Bitmap size: n, m"/> :
+            null
+          }
           </div>
           <div>
-            <button type="button" onClick={handleRandomize}>RANDOMIZE</button>
-          </div>
-          <div>
-            <button type="button" onClick={handleSolve}>SOLVE</button>
+            { showRandom ?
+              <button type="button" onClick={handleRandomize}>RANDOMIZE</button> :
+              <></>
+            }
+            { showSolve ?
+            <button type="button" onClick={handleSolve}>SOLVE</button> :
+            <></>
+            }
+            { showRestart ?
+            <button type="button" onClick={handleRestart}>RESTART</button> :
+            <></>
+            }
           </div>
         </form>
       </div>
