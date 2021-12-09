@@ -33,5 +33,5 @@ app.post('/solve', (req, res) => {
 })
 
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`Server is listening on port ${ PORT }...`);
+    console.log(`Server is listening on port ${ process.env.PORT || PORT }...`);
 });
