@@ -2,7 +2,7 @@ import React from 'react'
 import Sketch from 'react-p5'
 
 export default function Map({ mat, size, state }) {
-    const LEN = 10
+    const LEN = 3
     const {n, m} = size;
     let setup = (p5, canvasParentRef) => {
         p5.createCanvas(n * LEN, m * LEN).parent(canvasParentRef)
