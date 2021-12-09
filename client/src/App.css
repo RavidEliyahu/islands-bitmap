@@ -5,6 +5,10 @@ p {
     font-size: 12px;
 }
 
+.error {
+    color:crimson;
+}
+
 input {
     padding: 5px 0px 5px 0px;
     text-align: center;

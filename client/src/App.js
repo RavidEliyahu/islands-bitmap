@@ -7,7 +7,7 @@ function App() {
   const BASE_URL = process.env.REACT_APP_BASE_URL
   const DOCKER_URL = process.env.REACT_APP_DOCKER_URL
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState("")
   const [showRandom, setShowRandom] = useState(true)
   const [showSolve, setShowSolve] = useState(false)
   const [showRestart, setShowRestart] = useState(false)
@@ -16,43 +16,42 @@ function App() {
   const [islands, setIslands] = useState(0)
   const bitmapInputRef = useRef()
   const [state, setState] = useState('randomize')
-  const [action, setAction] = useState({
-    method: 'POST',
-    url: `${ DOCKER_URL || BASE_URL }/randomize`,
-    headers: { "Content-Type": "application/json" },
-    data: { n: 0, m: 0 }
-  })
-
+  const [action, setAction] = useState({})
 
   useEffect(() => {
-    axios(action)
-    .then((res) => {
-      setMat(res.data.mat)
-      if ("numOfIslands" in res.data) setIslands(res.data.numOfIslands)
-      setLoading(false);
-    })
+    if (action.data)
+      axios(action)
+      .then((res) => {
+        setMat(res.data.mat)
+        if ("numOfIslands" in res.data) setIslands(res.data.numOfIslands)
+        setLoading(false);
+      })
   }, [action])
 
   function handleRandomize(e) {
     try {
       setState("randomize")
       const [n, m] = (bitmapInputRef.current.value).replace(/\s/g, '').split(",").map(Number);
-      // if (!(isNaN(n) && n > 0 && isNaN(m) && m > 0))
-      // {
-      //   return
-      // }
-      setSize(prevState => { return {n, m} })
-      setAction({
-        method: 'POST',
-        url: `${ DOCKER_URL || BASE_URL }/randomize`,
-        headers: { "Content-Type": "application/json" },
-        data: { n, m }
-      })
-      setLoading(true);
+      if (n && m && Number.isInteger(n) &&
+          n > 0 && Number.isInteger(m) &&
+          m > 0 && m <= 1000 && n <= 1000)
+      {
+        setError("")
+        setSize(prevState => { return {n, m} })
+        setAction({
+          method: 'POST',
+          url: `${ DOCKER_URL || BASE_URL }/randomize`,
+          headers: { "Content-Type": "application/json" },
+          data: { n, m }
+        })
+        setLoading(true);
 
-      // switch buttons
-      setShowRandom(false);
-      setShowSolve(true);
+        // switch buttons
+        setShowRandom(false);
+        setShowSolve(true);
+      } else {
+        setError("Invalid input!!!!")
+      }
     } catch (e) {
       console.error(e)
     }
@@ -116,6 +115,9 @@ function App() {
             { showRestart ?
             <button type="button" onClick={handleRestart}>RESTART</button> :
             <></>
+            }
+            {
+              error ? <h4 className="error">{ error }</h4> : <></>
             }
           </div>
         </form>

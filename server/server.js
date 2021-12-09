@@ -1,8 +1,8 @@
 const PORT = 5000;
-const express = require('express');
-const cors = require('cors');
+    express = require('express');
+    cors = require('cors');
+    app = express();
 
-const app = express();
 require('dotenv').config();
 require('./utils.js')();
 
@@ -32,6 +32,6 @@ app.post('/solve', (req, res) => {
     }
 })
 
-app.listen(process.env.BASE_PORT || PORT, () => {
-    console.log(`Server is listening on port ${ process.env.BASE_PORT || PORT }...`);
+const server = app.listen(process.env.BASE_PORT || PORT, () => {
+    console.log(`Server is listening on port ${ server.address().port }...`);
 });
