@@ -32,7 +32,7 @@ function App() {
 
   function handleRandomize(e) {
     setState("randomize")
-    const [n, m] = (bitmapInputRef.current.value).split(", ").map(Number);
+    const [n, m] = (bitmapInputRef.current.value).replace(/\s/g, '').split(",").map(Number);
     setSize(prevState => { return {n, m} })
     setAction({
       method: 'POST',
