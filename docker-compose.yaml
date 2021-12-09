@@ -24,7 +24,7 @@ services:
       ports:
           - "5000:5000"
       build:
-          context: ./servier
+          context: ./server
           dockerfile: ./Dockerfile
           args:
               APP: server
