@@ -66,7 +66,7 @@ module.exports = function() {
                 }
             }
         }
-        console.log(`there are ${ count } islands`);
+        console.log({ message: `there are ${ count } islands` });
         return { islands: copyM, numOfIslands: count };
     };
     this.make2Darray = function(cols, rows) {
@@ -74,7 +74,7 @@ module.exports = function() {
         for (let i = 0; i < cols; i++) {
             arr[i] = new Array(rows);
             for (let j = 0; j < rows; j++) {
-                arr[i][j] = Math.random() < 0.5 ? 0 : 255;
+                arr[i][j] = Math.random() < 0.3 ? 0 : 255;
             }
         }
         return arr;

@@ -26,7 +26,7 @@ export default function Map({ mat, size, state }) {
                     p5.stroke(0);
                     p5.rect(x, y, LEN, LEN);
                 }
-            })
+            }, Math.random() * 10)
         }
         p5.noLoop()
     }
