@@ -4,6 +4,7 @@ import "./App.css"
 import axios from 'axios'
 
 function App() {
+  const BASE_URL = process.env.REACT_APP_BASE_URL
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [showRandom, setShowRandom] = useState(true)
@@ -16,7 +17,7 @@ function App() {
   const [state, setState] = useState('randomize')
   const [action, setAction] = useState({
     method: 'POST',
-    url: `${process.env.BASE_URL || process.env.DOCKER_URL}/randomize`,
+    url: `${ BASE_URL || process.env.DOCKER_URL }/randomize`,
     headers: { "Content-Type": "application/json" },
     data: { n: 0, m: 0 }
   })
@@ -42,7 +43,7 @@ function App() {
       setSize(prevState => { return {n, m} })
       setAction({
         method: 'POST',
-        url: `${process.env.BASE_URL || process.env.DOCKER_URL}/randomize`,
+        url: `${ BASE_URL || process.env.DOCKER_URL}/randomize`,
         headers: { "Content-Type": "application/json" },
         data: { n, m }
       })
@@ -60,7 +61,7 @@ function App() {
     setState("solve")
     setAction({
       method: 'POST',
-      url: `${process.env.BASE_URL || process.env.DOCKER_URL}/solve`,
+      url: `${ BASE_URL || process.env.DOCKER_URL }/solve`,
       headers: { "Content-Type": "application/json" },
       data: { mat, n: size.n, m: size.m }
     })

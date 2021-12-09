@@ -21,7 +21,9 @@ function copyMat(M, cols, rows) {
 }
 
 function isSafe(M, col, boundCol, row, boundRow, visited) {
-    return (row >= 0) && (row < boundRow) && (col >= 0) && (col < boundCol) && (M[col][row] == 0 && !visited[col][row]);
+    return (row >= 0) && (row < boundRow) &&
+            (col >= 0) && (col < boundCol) &&
+            (M[col][row] == 0 && !visited[col][row]);
 }
 
 function BFS(M, copy, col, boundCol, row, boundRow, visited, color) {
