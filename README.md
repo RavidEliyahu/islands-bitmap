@@ -87,7 +87,7 @@ Don't forget to terminate the session after you finished using it with:
 docker-compose down
 ```
 
-## A quick look
+## A Quick Look
 <img width="363" alt="Screen Shot 2021-12-10 at 3 31 42" src="https://user-images.githubusercontent.com/46108499/145502115-f9a69835-7a74-426a-8a2c-c9dd781dd4c6.png"><br>
 
 <img width="363" alt="Screen Shot 2021-12-10 at 3 32 25" src="https://user-images.githubusercontent.com/46108499/145502157-2a873d41-10e1-46e2-80ff-bdfbfa80b8dd.png">
