@@ -11,9 +11,11 @@ services:
           context: ./client
           dockerfile: ./Dockerfile
       environment:
-          - DOCKER_URL=http://server:5000
+          - REACT_APP_DOCKER_URL=http://0.0.0.0/server
       networks:
           - ravid-net
+      expose:
+        - 3000
 ###########################
   server:
       container_name: server
@@ -28,8 +30,6 @@ services:
           - BASE_PORT=5000
       networks:
           - ravid-net
-      expose:
-        - 5000
 ###########################
   nginx:
       container_name: nginx
