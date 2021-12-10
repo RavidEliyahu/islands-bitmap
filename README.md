@@ -66,7 +66,7 @@ npm run start
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Option 1 - Run with Docker & Docker Compose
+## Option 2 - Run with Docker & Docker Compose
 ### 1. Clone repository 
 ```
 git clone https://github.com/RavidEliyahu/islands-bitmap.git
@@ -77,7 +77,7 @@ cd islands-bitmap
 docker-compose up -d --build server client
 ```
 When it finished building you can access the client via browser: [http://localhost:3000](http://localhost:3000)
-### 3. More docker commands
+### 3. More Docker commands
 For server logs you can use:
 ```
 docker logs -f server
