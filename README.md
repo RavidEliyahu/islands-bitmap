@@ -53,13 +53,7 @@ To test the Express server, browse to the URL [http://localhost:5000/](http://lo
 Open a second terminal and type:
 ```
 cd client
-```
-In the project directory, run:
-```
 npm install
-```
-Then type:
-```
 npm run start
 ```
 Runs the app in the development mode.<br>
