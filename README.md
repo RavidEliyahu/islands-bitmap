@@ -1,5 +1,5 @@
 # islands-bitmap
-This app will randomize n x m matrix and will draw it on the screen. <br>
+This app will randomize width x height matrix and will draw it on the screen. <br>
 Furthermore, you can find how many islands the random matrix has by pressing solve.<br>
 
 ## Stack
