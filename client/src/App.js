@@ -96,31 +96,29 @@ function App() {
         {
           showRestart ? `FOUND ${ islands } ISLAND${ islands > 1 ? "S" : "" }!` : null
         }
-        <form>
-          <div>
+        <div className="center">
+        { showRandom ?
+          <input ref={bitmapInputRef} type="text" id="bitmap_input" placeholder="Bitmap size: n, m"/> :
+          null
+        }
+        </div>
+        <div className="center">
           { showRandom ?
-            <input ref={bitmapInputRef} type="text" id="bitmap_input" placeholder="Bitmap size: n, m"/> :
-            null
+            <button type="button" onClick={handleRandomize}>RANDOMIZE</button> :
+            <></>
           }
-          </div>
-          <div>
-            { showRandom ?
-              <button type="button" onClick={handleRandomize}>RANDOMIZE</button> :
-              <></>
-            }
-            { showSolve ?
-            <button type="button" onClick={handleSolve}>SOLVE</button> :
-            <></>
-            }
-            { showRestart ?
-            <button type="button" onClick={handleRestart}>RESTART</button> :
-            <></>
-            }
-            {
-              error ? <h4 className="error">{ error }</h4> : <></>
-            }
-          </div>
-        </form>
+          { showSolve ?
+          <button type="button" onClick={handleSolve}>SOLVE</button> :
+          <></>
+          }
+          { showRestart ?
+          <button type="button" onClick={handleRestart}>RESTART</button> :
+          <></>
+          }
+          {
+            error ? <h4 className="error">{ error }</h4> : <></>
+          }
+        </div>
       </div>
     </>
   )
