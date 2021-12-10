@@ -30,7 +30,7 @@ Furthermore, you can find how many islands the random matrix has by pressing sol
   - Node (`v10.x`)
 
 ## Swagger API
-https://app.swaggerhub.com/apis/ravid-eliyahu/islands-bitmap/1.0.0
+https://app.swaggerhub.com/apis-docs/ravid-eliyahu/islands-bitmap/1.0.0
 
 ## A quick look
 <img width="363" alt="Screen Shot 2021-12-10 at 3 31 42" src="https://user-images.githubusercontent.com/46108499/145502115-f9a69835-7a74-426a-8a2c-c9dd781dd4c6.png"><br>
