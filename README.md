@@ -75,7 +75,7 @@ cd islands-bitmap
 ```
 docker-compose up -d --build server client
 ```
-When it finished building you can access the client via browser: [http://localhost:3000](http://localhost:3000)
+When it finish building you can access the client via browser: [http://localhost:3000](http://localhost:3000)
 ### 3. More Docker commands
 For server logs you can use:
 ```
