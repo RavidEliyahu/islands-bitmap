@@ -27,7 +27,49 @@ Furthermore, you can find how many islands the random matrix has by pressing sol
 
 - Prerequisites
 
+  - git
   - Node (`v10.x`)
+  - Docker
+  - Docker Compose
+
+### 1.Clone repository 
+```
+git clone https://github.com/RavidEliyahu/islands-bitmap.git
+cd islands-bitmap
+```
+### 2. Setup Express Server
+Install the project's dependencies using `npm` and then start the application.
+
+```
+cd server
+npm install
+npm run start
+
+```
+To test the Express server, browse to the URL [http://localhost:5000/](http://localhost:5000/).
+
+### 3. Setup React Client
+
+Open a second terminal and type:
+
+```
+cd client
+```
+
+In the project directory, run:
+
+```
+npm install
+```
+
+Then type:
+
+```
+npm run start
+```
+
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Swagger API
 [Islands Bitmap Swagger API](https://app.swaggerhub.com/apis-docs/ravid-eliyahu/islands-bitmap/1.0.0)
