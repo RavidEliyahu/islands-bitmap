@@ -112,7 +112,6 @@ module.exports = function() {
                 }
             }
         }
-        console.log({ message: `there are ${ count } islands` });
         return { islands: copyM, numOfIslands: count };
     };
 
