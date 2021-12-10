@@ -32,7 +32,8 @@ Furthermore, you can find how many islands the random matrix has by pressing sol
   - Docker
   - Docker Compose
 
-### 1.Clone repository 
+### 1. Clone repository 
+
 ```
 git clone https://github.com/RavidEliyahu/islands-bitmap.git
 cd islands-bitmap
@@ -44,7 +45,6 @@ Install the project's dependencies using `npm` and then start the application.
 cd server
 npm install
 npm run start
-
 ```
 To test the Express server, browse to the URL [http://localhost:5000/](http://localhost:5000/).
 
@@ -55,19 +55,16 @@ Open a second terminal and type:
 ```
 cd client
 ```
-
 In the project directory, run:
 
 ```
 npm install
 ```
-
 Then type:
 
 ```
 npm run start
 ```
-
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
