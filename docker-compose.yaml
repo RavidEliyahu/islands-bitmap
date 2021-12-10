@@ -10,8 +10,8 @@ services:
       build:
           context: ./client
           dockerfile: ./Dockerfile
-      environment:
-          - REACT_APP_DOCKER_URL=http://0.0.0.0/server
+      # environment:
+      #     - REACT_APP_DOCKER_URL=http://localhost:5000
       networks:
           - ravid-net
       expose:
@@ -26,8 +26,8 @@ services:
       build:
           context: ./server
           dockerfile: ./Dockerfile
-      environment:
-          - BASE_PORT=5000
+      # environment:
+      #     - BASE_PORT=5000
       networks:
           - ravid-net
 ###########################
