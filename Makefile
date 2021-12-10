@@ -1,12 +1,4 @@
-docker-build-server:
-    docker-compose build server
-
-docker-build-client:
-    docker-compose build client
-
-docker-run:
-    docker-compose run -d client server
-
+# docker-compose run up -d --build client server
 # docker-compose build server client
 # docker logs client -f
 # docker logs server -f
