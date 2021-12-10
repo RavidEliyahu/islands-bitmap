@@ -12,9 +12,6 @@ Furthermore, you can find how many islands the random matrix has by pressing sol
 - Proxy
   - NGINX
 
-## Swagger API
-[Islands Bitmap Swagger API](https://app.swaggerhub.com/apis-docs/ravid-eliyahu/islands-bitmap/1.0.0)
-
 ### Frontend
 
 - Web
@@ -25,6 +22,9 @@ Furthermore, you can find how many islands the random matrix has by pressing sol
 - Technologies
   - Docker
   - Docker compose
+
+## Swagger API
+[Islands Bitmap Swagger API](https://app.swaggerhub.com/apis-docs/ravid-eliyahu/islands-bitmap/1.0.0)
 
 ## Setup and Running
 
@@ -65,6 +65,27 @@ npm run start
 ```
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Option 1 - Run with Docker & Docker Compose
+### 1. Clone repository 
+```
+git clone https://github.com/RavidEliyahu/islands-bitmap.git
+cd islands-bitmap
+```
+### 2. Run Docker Compose
+```
+docker-compose up -d --build server client
+```
+When it finished building you can access the client via browser: [http://localhost:3000](http://localhost:3000)
+### 3. More docker commands
+For server logs you can use:
+```
+docker logs -f server
+```
+Don't forget to terminate the session after you finished using it with:
+```
+docker-compose down
+```
 
 ## A quick look
 <img width="363" alt="Screen Shot 2021-12-10 at 3 31 42" src="https://user-images.githubusercontent.com/46108499/145502115-f9a69835-7a74-426a-8a2c-c9dd781dd4c6.png"><br>
