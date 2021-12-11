@@ -56,7 +56,11 @@ function App() {
    */
   function handleRandomize() {
     try {
-      const [n, m] = (bitmapInputRef.current.value).replace(/\s/g, '').split(",").map(Number);
+      const [n, m] = (bitmapInputRef.current.value)
+        .replace(/\s/g, '')
+        .split(",")
+        .map(Number)
+
       if (validateInput(n, m))
       {
         setError("") // no errors on input
@@ -75,11 +79,41 @@ function App() {
         setShowSolve(true);
       } else {
         setError("Invalid input!!!!")
+        setTimeout(() => setError(""), 2000)
       }
     } catch (e) {
       setError("Ops.. Something went wrong!")
       console.error(e)
     }
+  }
+
+  function handleDraw() {
+    const [n, m] = (bitmapInputRef.current.value)
+        .replace(/\s/g, '')
+        .split(",")
+        .map(Number)
+
+    if (validateInput(n, m))
+    {
+      setLoading(true);
+      setError("") // no errors on input
+      setState("draw")
+      setSize({n, m})
+      let arr = new Array(n);
+      for (let i = 0; i < n; i++) {
+        arr[i] = new Array(m);
+        for (let j = 0; j < m; j++) {
+          arr[i][j] = 255;
+        }
+      }
+      setMat(arr);
+      setShowRandom(false);
+      setShowSolve(true);
+    } else {
+      setError("Invalid input!!!!")
+      setTimeout(() => setError(""), 2000)
+    }
+    setTimeout(() => setLoading(false))
   }
 
   /**
@@ -120,14 +154,16 @@ function App() {
    * first state.
    */
   function handleRestart() {
+    setLoading(true)
     setState("restart")
     setMat([])
     setSize({ n: 0, m: 0 })
     setShowRestart(false)
     setShowRandom(true)
+    setTimeout(() => setLoading(false))
   }
 
-  if (loading) return (<p className="center">"Loading.."</p>)
+  if (loading) return (<p className="center">"Loading..."</p>)
 
   return (
     <>
@@ -139,12 +175,14 @@ function App() {
           `${size.n} X ${size.m}`
           }
         </p>
-        <Map mat={mat} size={size} state={state}></Map>
+        {
+          mat.length > 0 ? <Map mat={mat} size={size} state={state}></Map> : null
+        }
         {
           showRestart ?
           <p>
             { `FOUND ${ islands } ISLAND${ islands > 1 ? "S" : "" }!` }
-          </p> : null
+          </p> : <p/>
         }
         <div className="center">
           { showRandom ?
@@ -157,16 +195,30 @@ function App() {
           }
         </div>
         <div className="center">
-          {
-            showRandom ?
-            <button
-              className="app-btn"
-              type="button"
-              onClick={handleRandomize}
-            >
-              RANDOMIZE
-            </button> : null
-          }
+          <div>
+            {
+              showRandom ?
+              <button
+                className="app-btn"
+                type="button"
+                onClick={handleRandomize}
+              >
+                RANDOMIZE
+              </button> : null
+            }
+          </div>
+          <div>
+            {
+              showRandom ?
+              <button
+                className="app-btn"
+                type="button"
+                onClick={handleDraw}
+              >
+                DRAW
+              </button> : null
+            }
+          </div>
           {
             showSolve ?
             <button
