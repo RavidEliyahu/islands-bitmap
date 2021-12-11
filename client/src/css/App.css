@@ -28,12 +28,14 @@ p {
     margin: 3px;
 }
 
-button:hover {
+.app-btn:hover {
     cursor: pointer;
     color: deepskyblue;
     background-color: white;
 }
-
+.main {
+    position: relative;
+}
 .center {
     margin: auto;
     text-align: center;

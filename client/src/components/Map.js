@@ -17,20 +17,18 @@ export default function Map({ mat, size, state }) {
         p5.background(51);
         let colors = {}
         for (let i = 0; i < n; i++) {
-            //setTimeout(() => {
-                for (let j = 0; j < m; j++) {
-                    var x =  i * DRAW_SIZE;
-                    var y =  j * DRAW_SIZE;
-                    if (mat[i][j] !== 255 && state === "solve") {
-                        if (!(mat[i][j] in colors))
-                            colors[mat[i][j]] = randomColor(p5);
-                        p5.fill(colors[mat[i][j]]);
-                    } else
-                        p5.fill(mat[i][j]);
-                    p5.stroke(0);
-                    p5.rect(x, y, DRAW_SIZE, DRAW_SIZE);
-                }
-           // })
+            for (let j = 0; j < m; j++) {
+                var x =  i * DRAW_SIZE;
+                var y =  j * DRAW_SIZE;
+                if (mat[i][j] !== 255 && state === "solve") {
+                    if (!(mat[i][j] in colors))
+                        colors[mat[i][j]] = randomColor(p5);
+                    p5.fill(colors[mat[i][j]]);
+                } else
+                    p5.fill(mat[i][j]);
+                p5.stroke(0);
+                p5.rect(x, y, DRAW_SIZE, DRAW_SIZE);
+            }
         }
         p5.noLoop()
     }
@@ -43,7 +41,7 @@ export default function Map({ mat, size, state }) {
                     if (p5.mouseX > x1 && p5.mouseX < x2 && p5.mouseY > y1 && p5.mouseY < y2) {
                         mat[i][j] = 0;
                         p5.draw();
-                        //p5.noLoop();
+                        p5.noLoop();
                     }
                 }
             }
