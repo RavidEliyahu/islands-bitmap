@@ -8,8 +8,6 @@ Furthermore, you can find how many islands the random matrix has by pressing sol
 - API
   - NodeJS
   - Express
-- Proxy
-  - NGINX
 
 ### Frontend
 
