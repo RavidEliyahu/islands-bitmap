@@ -22,8 +22,8 @@ export default function Map({ mat, size, state }) {
 
         function paint(event, e, ctx, canvas) {
             if (event === "down") {
-                currX = e.clientX - canvas.offsetLeft;
-                currY = e.clientY - canvas.offsetTop;
+                currX = e.pageX - canvas.offsetLeft;
+                currY = e.pageY - canvas.offsetTop;
                 mat[Math.floor(currX/DRAW_SIZE)][Math.floor(currY/DRAW_SIZE)] = 0
                 ctx.fillRect(Math.floor(currX/DRAW_SIZE) * DRAW_SIZE, Math.floor(currY/DRAW_SIZE) * DRAW_SIZE, DRAW_SIZE, DRAW_SIZE)
             }
