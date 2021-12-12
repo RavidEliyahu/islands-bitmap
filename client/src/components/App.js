@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Map from './Map'
+import Canvas from './Canvas'
 import "../css/App.css"
 import axios from 'axios'
 
@@ -125,7 +125,7 @@ function App() {
   function validateInput(weight, height) {
     if (weight && height && Number.isInteger(weight) &&
     weight > 0 && Number.isInteger(height) &&
-    height > 0 && height <= 1000 && weight <= 1000)
+    height > 0 && height <= 1500 && weight <= 1500)
       return true
     return false
   }
@@ -176,7 +176,7 @@ function App() {
           }
         </p>
         {
-          mat.length > 0 ? <Map mat={mat} size={size} state={state}></Map> : null
+          mat.length > 0 ? <Canvas mat={mat} size={size} state={state}></Canvas> : null
         }
         {
           showRestart ?

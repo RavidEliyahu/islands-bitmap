@@ -9,8 +9,8 @@ module.exports = function() {
      */
     this.validateRandomize = (body) => {
         const randomizeSchema = Joi.object({
-            n: Joi.number().min(1).max(1000).integer().required(),
-            m: Joi.number().min(1).max(1000).integer().required()
+            n: Joi.number().min(1).max(1500).integer().required(),
+            m: Joi.number().min(1).max(1500).integer().required()
         });
         return Joi.validate(body, randomizeSchema);
     }
@@ -21,8 +21,8 @@ module.exports = function() {
      */
     this.validateSolve = (body) => {
         const solveSchema = Joi.object({
-            n: Joi.number().min(1).max(1000).integer().required(),
-            m: Joi.number().min(1).max(1000).integer().required(),
+            n: Joi.number().min(1).max(1500).integer().required(),
+            m: Joi.number().min(1).max(1500).integer().required(),
             mat: Joi
             .array()
             .items(
