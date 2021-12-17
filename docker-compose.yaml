@@ -1,17 +1,20 @@
+
 version: '3.6'
 services:
 ###########################
   client:
       container_name: client
-      image: ravid-client:latest
+      image: ravid-client:latest  // i would change the image names for something else without your name
       restart: always
       ports:
           - "3000:3000"
       build:
           context: ./client
           dockerfile: ./Dockerfile
+          
+      // why you give up on this? I would prefer to send the adress as an enviornment
       # environment:
-      #     - REACT_APP_DOCKER_URL=http://localhost:5000
+      #     - REACT_APP_DOCKER_URL=http://localhost:5000 
       networks:
           - ravid-net
       expose:

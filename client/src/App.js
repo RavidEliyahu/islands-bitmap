@@ -89,19 +89,25 @@ function App() {
   return (
     <>
       <div className="center">
+
+        {/* showRandom - show random of what? this state name does not suggest anything */}
         <p>{ showRandom ? "Please enter bitmap size:" : `${size.n} X ${size.m}`}</p>
         {
           <Map mat={mat} size={size} state={state}></Map>
         }
         {
           showRestart ? `FOUND ${ islands } ISLAND${ islands > 1 ? "S" : "" }!` : null
+          // showRestart && `FOUND ${islands} ISLAND${islands > 1 ? "S" : ""}!` // better way if the second option is null
+          
         }
-        <div className="center">
+        {/* You dont have to put classname center css here again, you already have this class name in the main div, remove it!*/}
+        <div className="center"> 
         { showRandom ?
           <input ref={bitmapInputRef} type="text" id="bitmap_input" placeholder="Bitmap size: n, m"/> :
           null
         }
         </div>
+        {/* You dont have to put classname center css here again, you already have this class name in the main div, remove it!*/}
         <div className="center">
           { showRandom ?
             <button type="button" onClick={handleRandomize}>RANDOMIZE</button> :

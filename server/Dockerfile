@@ -4,8 +4,10 @@ FROM node:12-alpine3.12
 # set workdir
 WORKDIR /app
 
+
+// This shit is necessary?
 # copy files
-COPY . .
+COPY . . 
 
 # install the app
 RUN npm install
